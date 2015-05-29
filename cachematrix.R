@@ -35,6 +35,7 @@ cacheSolve <- function(x, ...) {
   data <- x$get()
   #im <- solve(data)
   #solve() can only be used to square matrix
+  #use ginv() compute inverse matrix
   im<-ginv(data)
   x$setInverse(im)
   im
