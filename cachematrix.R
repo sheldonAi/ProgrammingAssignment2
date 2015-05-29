@@ -1,6 +1,9 @@
+#load MASS package
+#to use ginv() computing the inverse matrix
+library(MASS)
+
 ## makeCacheMatrix: This function creates a special
 ##"matrix" object that can cache its inverse.
-
 makeCacheMatrix <- function(x = matrix()) {
   im<-NULL
   set<-function(y=matrix()){
@@ -30,7 +33,9 @@ cacheSolve <- function(x, ...) {
     return(im)
   }
   data <- x$get()
-  im <- solve(data)
+  #im <- solve(data)
+  #solve() can only be used to square matrix
+  im<-ginv(data)
   x$setInverse(im)
   im
 }
